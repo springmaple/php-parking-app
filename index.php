@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Parking Price Calculator</title>
+    <title>Parking Fee Calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         .success {
@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Parking Price Calculator</h1>
+    <h1>Parking Fee Calculator</h1>
 
     <?php
         $message = "";
@@ -39,20 +39,20 @@
                     $errorMessage = "Start date time must be before end date time";
                 } else {
                     $oneHour = new DateInterval('PT1H');
-                    $price = 0;
+                    $fee = 0;
                     $tmpStartDateTime = clone $startDateTime;
                     if ($tmpStartDateTime != $endDateTime) {
                         do {
                             $tmpStartDateTime->add($oneHour);
                             $hour = $tmpStartDateTime->format('H');
                             if ($hour > 8 && $hour <= 20) {
-                                $price += 2;
+                                $fee += 2;
                             } else {
-                                $price += 1;
+                                $fee += 1;
                             }
                         } while($tmpStartDateTime < $endDateTime);
                     }
-                    $message = "Price: MYR " . number_format((float)$price, 2, '.', '');
+                    $message = "Fee: MYR " . number_format((float)$fee, 2, '.', '');
                 }
             }
         }
