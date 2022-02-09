@@ -45,7 +45,7 @@
                         do {
                             $tmpStartDateTime->add($oneHour);
                             $hour = $tmpStartDateTime->format('H');
-                            if ($hour >= 8 && $hour <= 20) {
+                            if ($hour > 8 && $hour <= 20) {
                                 $price += 2;
                             } else {
                                 $price += 1;
